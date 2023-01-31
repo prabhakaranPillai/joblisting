@@ -1,0 +1,68 @@
+{
+  "jobData": [
+    {
+      "new": true,
+      "featured": false,
+      "company": "YY APP ll",
+      "logo": "../../assets/images/manage.svg",
+      "id": 1140,
+      "position": "frontend",
+      "contract": "Full Time",
+      "role": "dev",
+      "level": "Midweight",
+      "postedAt": "1 day ago",
+      "location": "India only",
+      "languages": [
+        "JavaScript",
+        "Python",
+        "Java",
+        "C#"
+      ],
+      "tools": [
+        "React",
+        "Saas"
+      ]
+    },
+    {
+      "new": false,
+      "featured": true,
+      "company": "APPWE",
+      "logo": "../../assets/images/insure.svg",
+      "id": 1301,
+      "position": "fullstack",
+      "contract": "Full Time",
+      "role": "dev",
+      "level": "Midweight",
+      "postedAt": "1 day ago",
+      "location": "India only",
+      "languages": [
+        "Java"
+      ],
+      "tools": [
+        "React"
+      ]
+    },
+    {
+      "new": true,
+      "featured": true,
+      "company": "wonSS",
+      "logo": "../../assets/images/insure.svg",
+      "id": 1415,
+      "position": "fullstack",
+      "contract": "Full Time",
+      "role": "dev",
+      "level": "Midweight",
+      "postedAt": "1 day ago",
+      "location": "India only",
+      "languages": [
+        "CSS",
+        "JavaScript",
+        "Python",
+        "Java"
+      ],
+      "tools": [
+        "React"
+      ]
+    }
+  ]
+}

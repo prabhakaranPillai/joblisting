@@ -1,0 +1,150 @@
+<div style="width: 100%" class="mat-typography">
+  <h2 style="color: rgb(0, 0, 0)">
+    <marquee direction="right" behavior="alternate">
+      ADD DETAILS OF NEW OPENING</marquee
+    >
+  </h2>
+  <hr />
+</div>
+<mat-dialog-content>
+  <div class="example-container">
+    <form [formGroup]="addOppurtuinityForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="example-full-width">
+        <mat-label>company name</mat-label>
+        <input
+          formControlName="company"
+          matInput
+          placeholder="Ex. Ram & co"
+          value=""
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>logo url </mat-label>
+        <input
+          formControlName="logo"
+          matInput
+          placeholder="EX. ./images/photosnap.svg"
+          value=""
+        />
+      </mat-form-field>
+
+      <section class="example-section">
+        <mat-checkbox formControlName="new" class="example-margin"
+          >new</mat-checkbox
+        >
+        <mat-checkbox formControlName="featured" class="example-margin"
+          >featured</mat-checkbox
+        >
+      </section>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>position </mat-label>
+        <input
+          formControlName="position"
+          matInput
+          placeholder="position"
+          value=""
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>role </mat-label>
+        <input formControlName="role" matInput placeholder="role" value="" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Level</mat-label>
+        <mat-select formControlName="level" required>
+          <mat-option value="Senior">Senior</mat-option>
+          <mat-option value="Junior">Junior</mat-option>
+          <mat-option value="Midweight">Midweight</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>posted At </mat-label>
+        <input
+          formControlName="postedAt"
+          matInput
+          placeholder="postedAt"
+          value=""
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>contract </mat-label>
+        <input
+          formControlName="contract"
+          matInput
+          placeholder="contract"
+          value=""
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label> location </mat-label>
+        <input
+          formControlName="location"
+          matInput
+          placeholder="  location"
+          value=""
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Languages</mat-label>
+        <mat-select formControlName="languages" multiple>
+          <mat-select-trigger>
+            {{Languages.value?.[0] || ''}}
+            <span
+              *ngIf="(Languages.value?.length || 0) > 1"
+              class="example-additional-selection"
+            >
+              (+{{ (Languages.value?.length || 0) - 1 }}
+              {{ Languages.value?.length === 2 ? "other" : "others" }})
+            </span>
+          </mat-select-trigger>
+          <mat-option
+            *ngFor="let language of LanguagesList"
+            [value]="language"
+            >{{ language }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>tools</mat-label>
+        <mat-select formControlName="tools" multiple>
+          <mat-select-trigger>
+            {{tools.value?.[0] || ''}}
+            <span
+              *ngIf="(tools.value?.length || 0) > 1"
+              class="example-additional-selection"
+            >
+              (+{{ (tools.value?.length || 0) - 1 }}
+              {{ tools.value?.length === 2 ? "other" : "others" }})
+            </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let tool of toolsList" [value]="tool">{{
+            tool
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-dialog-actions align="end">
+        <button mat-button (click)="onDailogClose()" mat-dialog-close>
+          Cancel
+        </button>
+        <button
+          type="submit"
+          mat-button
+          [mat-dialog-close]="true"
+          cdkFocusInitial
+        >
+          Submit
+        </button>
+      </mat-dialog-actions>
+    </form>
+  </div>
+</mat-dialog-content>

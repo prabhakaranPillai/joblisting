@@ -1,0 +1,96 @@
+<br />
+<div class="container">
+  <div class="search-and-cards">
+    <!--dialog box button -->
+    <a mat-raised-button class="abutton" (click)="onClick()" target="_blank"
+      >Add</a
+    >
+
+    <!-- search box using chips -->
+    <mat-form-field class="example-chip-list" appearance="fill">
+      <mat-label>Search Jobs</mat-label>
+      <mat-chip-grid #chipGrid aria-label="search Jobs">
+        <mat-chip-row
+          *ngFor="let skill of skills"
+          (removed)="remove(skill)"
+          [editable]="true"
+          (edited)="edit(skill, $event)"
+          [aria-description]="'press enter to edit ' + skill.name"
+        >
+          {{ skill.name }}
+          <button matChipRemove [attr.aria-label]="'remove ' + skill.name">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+        <input
+          placeholder="Search Jobs..."
+          [matChipInputFor]="chipGrid"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="add($event)"
+        />
+        <button mat-button (click)="removeAllChips()">clear</button>
+      </mat-chip-grid>
+    </mat-form-field>
+  </div>
+
+  <h1 *ngIf="noDataFound">No Search Results Found!</h1>
+
+  <!-- Cards -->
+  <mat-card class="example-card" *ngFor="let job of jobData">
+    <mat-card-header>
+      <img mat-card-sm-image src="{{ job.logo }}" alt="company logo" />
+
+      <mat-card-title-group>
+        <mat-card-title
+          ><span class="company-name"> {{ job.company }}</span>
+
+          <button *ngIf="job.new" class="new-button">NEW!</button>
+
+          <button *ngIf="job.featured" class="feature-button">FEATURED</button>
+        </mat-card-title>
+        <mat-card-subtitle
+          ><span class="job-position">{{ job.level }}</span>
+          <span class="job-position">{{ job.position }}</span>
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+          <span class="card-footer" id="postedAt"> {{ job.postedAt }}</span
+          >● <span class="card-footer" id="contract"> {{ job.contract }}</span
+          >●
+          <span class="card-footer" id="location"> {{ job.location }}</span>
+        </mat-card-subtitle>
+      </mat-card-title-group>
+
+      <div class="skil-div">
+        <button class="skill-buttons" *ngFor="let lang of job.languages">
+          {{ lang }}
+        </button>
+
+        <button class="skill-buttons" *ngFor="let tool of job.tools">
+          {{ tool }}
+        </button>
+      </div>
+      <mat-card-footer>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon class="vert-icon"> more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="editJob(job.id)">
+            <mat-icon> edit</mat-icon>
+            <span>Edit</span>
+          </button>
+          <button mat-menu-item (click)="cloneJob(job.id)">
+            <mat-icon> add_circle_outline</mat-icon>
+            <span>Clone</span>
+          </button>
+          <button mat-menu-item (click)="deleteJob(job.id)">
+            <mat-icon> delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </mat-card-footer>
+    </mat-card-header>
+
+    <mat-card-content> </mat-card-content>
+  </mat-card>
+</div>
